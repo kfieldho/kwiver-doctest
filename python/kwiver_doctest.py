@@ -6,6 +6,9 @@ The module level documentation can contain reStructuredText in it just like the 
 a documenation collection.
 """
 
+# Import numpy as an example of a C based extension that Read The Docs can't support
+import numpy
+
 def sample_function(foo):
    """This is sample function documentation
 
