@@ -48,3 +48,28 @@ What follows is documentation found in the :file:`kwiver_doctest.py` module incl
  
 .. automodule:: kwiver_doctest
    :members:
+
+Command Documentation Example
+-----------------------------
+
+For the KWIVER project, we use the ``argparse`` module to parse our command line arguments.   Among other things, this allows
+us to use the sphinx-argparse_ extension which will automatically document commands based on the help text included when the
+parser is built.  In order to use it you'd invoke it like this::
+
+
+    .. argparse::
+       :ref: kwiver-doctest-command.cli_parser
+       :prog: kwiver-doctest-command
+
+Which results in output like this:
+
+.. argparse::
+   :ref: kwiver-doctest-command.cli_parser
+   :prog: kwiver-doctest-command
+
+In order for this to work, you command mus tbe on the Python path that you set up in :file:`conf.py` and there must be a symbol (either
+a function call or a variable) at the root level of the module that Sphinx can use to access the ``argparse`` object so that it 
+can introspect the help text.  If you use a function (like we have here with ``cli_parser()``) make sure that the function *only* creates the ``argparse`` object
+becuase it will be exectued within the Sphinx process when the documentation is generated.
+
+.. _sphinx-argparse: https://sphinx-argparse.readthedocs.org/en/latest/
